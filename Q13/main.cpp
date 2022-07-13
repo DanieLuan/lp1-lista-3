@@ -14,7 +14,7 @@ void print(std::vector<int> vec){
     }
     std::cout << "}" << std::endl;
 }
-
+ 
 int binarySearch(std::vector<int> nums, int target){
     int left = 0;
     int right = nums.size()-1;
