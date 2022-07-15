@@ -1,44 +1,42 @@
 #include <iostream>
 #include <vector>
 
-void inssert(std::vector<int> vec, int value){
-    for(size_t i = 0; i < vec.size(); i++){
-        
-    }
-}
-
 void print(std::vector<int> vec){
-    std::cout << "Vector to be used: \n{ ";
+    std::cout << "{ ";
     for(size_t i = 0; i < vec.size(); i++){
         std::cout << vec[i] << " ";
     }
     std::cout << "}" << std::endl;
 }
- 
-int binarySearch(std::vector<int> nums, int target){
+
+void insertSort(std::vector<int> &vec, int value){
     int left = 0;
-    int right = nums.size()-1;
-
-    while(left < right){
-        int mid = (left+right)/2;
-
-        if(nums[mid] < target){
+    int right = vec.size()-1;
+    int mid;
+    while(left <= right){
+        mid = (left+right+1)/2;
+        if(vec[mid] < value){
             left = mid+1;
-        } else if(nums[mid] > target) {
+        } else if(vec[mid] > value) {
             right = mid-1;
         } else {
-            return mid;
+            vec.insert(vec.begin()+mid, value);
+            return;
         }
     }
-    return -1;
+    if(value > vec[vec.size()-1]){
+        vec.insert(vec.begin()+mid+1, value);
+    } else {
+        vec.insert(vec.begin()+mid, value);
+    }
 }
 
 int main(){
-    std::vector<int> vec = {0, 1, 4, 6, 8, 9, 10, 13};
-
+    std::vector<int> vec = {0, 1, 2, 3, 4, 6, 7, 9};
+    int num;
+    std::cin >> num;
     print(vec);
-    vec.insert(vec.begin()+1, 2);
+    insertSort(vec,num);
     print(vec); 
-    //std::cout << binarySearch(vec, 11) << std::endl;
     return 0;
 }
