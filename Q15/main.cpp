@@ -17,7 +17,7 @@ void invertStr(std::string &str){
 }
 
 int main(){
-    std::string str = "SOCA SOCA SOCA SOCA";
+    std::string str = "Brasil Brasileiro";
 
     
     std::cout << "Original: " << str << std::endl;
